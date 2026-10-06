@@ -1,131 +1,127 @@
-P4 - Food Delivery Automation
+# P4 - Food Delivery Automation
 
-Playwright + TypeScript automation project for testing a food delivery web application.
+Playwright + TypeScript automation project for testing food ordering and checkout flows.
 
-Project Overview
+## Project Overview
 
-This project focuses on functional testing, business rules, and negative testing for a food delivery application.
+This project focuses on functional testing, business-rule validation, and positive and negative testing for a food delivery application.
 
-The automation covers:
+## Application Under Test
 
-- User login
-- Invalid login
-- Pizza selection
-- Pizza size selection
-- Add customized pizza to cart
-- Cart validation
-- Checkout validation
-- Payment method selection
-- Checkout total validation
+**OmniPizza Food Delivery Application**
 
-Application Under Test
-
-OmniPizza Food Delivery Application
-
-URL:
 https://omnipizza-frontend.onrender.com
 
-Tools & Technologies
+## Tools and Technologies
 
 - Playwright
 - TypeScript
 - Node.js
-- Git & GitHub
+- Page Object Model
+- GitHub Actions
 
-Project Structure
+## Test Coverage
 
-P4-Food-Delivery-Automation/
-├── pages/
-│   ├── login.page.ts
-│   ├── order.page.ts
-│   └── checkout.page.ts
-├── tests/
-│   ├── login.spec.ts
-│   ├── ordering.spec.ts
-│   └── checkout.spec.ts
-├── test-data/
-│   └── users.ts
-├── playwright.config.ts
-├── package.json
-├── package-lock.json
-├── README.md
-└── .gitignore
+### Login
 
-Test Scenarios
+- Login with valid credentials
+- Validate invalid login credentials
 
-Login
+### Ordering
 
-1. Login with valid user
-2. Login with invalid credentials
+- Select a pizza and change its size
+- Add a customised pizza to the cart
+- Verify cart quantity and total
 
-Ordering
+### Checkout
 
-3. Select pizza and change size
-4. Add customized pizza to cart
-5. Verify cart quantity and total
+- Validate checkout with a missing required delivery field
+- Change the payment method
+- Verify the checkout total
+- Verify order confirmation after checkout
 
-Checkout
+## Automation Approach
 
-6. Continue checkout with missing required delivery field
-7. Change payment method
-8. Verify checkout total
-9. Verify order confirmation after checkout
+The project uses the Page Object Model to keep page locators and reusable actions separate from test cases.
 
-Automation Approach
-
-The project uses the Page Object Model (POM) to keep page locators and actions separate from test cases.
-
-The tests use:
+The tests include:
 
 - Role-based locators
 - Test ID locators
 - Assertions
-- Reusable page methods
-- Positive and negative test scenarios
-- Business rule validation
-- Cross-browser testing
+- Positive and negative scenarios
+- Business-rule validation
+- Cross-browser execution
 
-Test Execution
+## Project Structure
+
+```text
+P4-Food-Delivery-Automation/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml
+├── pages/
+│   ├── checkout.page.ts
+│   ├── login.page.ts
+│   └── order.page.ts
+├── test-data/
+│   └── users.ts
+├── tests/
+│   ├── checkout.spec.ts
+│   ├── login.spec.ts
+│   └── ordering.spec.ts
+├── package.json
+├── package-lock.json
+├── playwright.config.ts
+└── README.md
+```
+
+## Test Execution
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Install Playwright browsers:
+
+```bash
+npx playwright install
+```
 
 Run all tests:
 
+```bash
 npx playwright test
+```
 
 Run checkout tests:
 
+```bash
 npx playwright test tests/checkout.spec.ts
+```
 
-Run tests on a specific browser:
+Run tests on Chromium:
 
+```bash
 npx playwright test --project=chromium
+```
 
-Test Result
+## GitHub Actions CI
 
-The current test suite contains 9 test scenarios.
+GitHub Actions is configured to:
 
-All scenarios were executed across:
+1. Check out the repository
+2. Install npm dependencies
+3. Install Playwright browsers
+4. Run the Playwright test suite
 
-- Chromium
-- Firefox
-- WebKit
+## What I Practiced
 
-Total executions: 27/27 passed ✅
-
-What I Practiced
-
-Through this project, I practiced:
-
-- UI automation using Playwright
-- TypeScript
+- UI automation using Playwright and TypeScript
 - Page Object Model
+- Food ordering and checkout testing
+- Business-rule validation
 - Positive and negative testing
-- Business rule validation
-- Form validation
-- Payment method validation
-- Checkout validation
-- Cross-browser testing
-- Git and GitHub
-
-Note
-
-This project was created for QA automation practice and portfolio demonstration.
+- GitHub Actions CI
